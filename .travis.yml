@@ -3,6 +3,9 @@ jdk:
 - openjdk8
 
 addons:
+  apt:
+  packages:
+    - oracle-java8-installer
   sonarcloud:
     organization: "rglenz"
     token: "cad0de51402e0164d5c90c4e6fba544192de426a"
