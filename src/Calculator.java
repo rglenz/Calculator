@@ -171,25 +171,34 @@ public class Calculator extends Application{
 				switch(operator) {
 					case "+":
 						sum=temp1+temp2;
+						screen.setText(String.valueOf(sum));
 						break;
 					case "-":
 						sum=temp1-temp2;
+						screen.setText(String.valueOf(sum));
 						break;
 					case "*":
 						sum=temp1*temp2;
+						screen.setText(String.valueOf(sum));
 						break;
 					case "/":
+						if(temp2==0) {
+							screen.setText("Can't Divide by 0");
+							break;
+						}
 						sum=temp1/temp2;
+						screen.setText(String.valueOf(sum));
 						break;	
 					case "LN":
 						if(temp1==0)
 							temp1=1.0;
 						sum=(temp1*Math.log(temp2));
+						screen.setText(String.valueOf(sum));
 						break;	
 				}
 		
 				temp1=sum;
-				screen.setText(String.valueOf(sum));
+				
 			}
 		});
 		//set the scene 
