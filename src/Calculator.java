@@ -37,6 +37,7 @@ public class Calculator extends Application{
 		Button buttonMinus = new Button("-");
 		Button buttonDivide = new Button("/");
 		Button buttonMultiply = new Button("*");
+		Button buttonLog = new Button("LN");
 		Button buttonEqual = new Button("=");
 		Button buttonClear = new Button("CE");
 		Button buttonDec = new Button(".");
@@ -61,6 +62,7 @@ public class Calculator extends Application{
 		grid.add(buttonEqual, 2, 4,1,1);
 		grid.add(buttonAdd, 3, 4,1,1);
 		grid.add(buttonDec, 0, 5,1,1);
+		grid.add(buttonLog, 1, 5,1,1);
 		
 
 		//align the left column correctly 
@@ -145,6 +147,11 @@ public class Calculator extends Application{
 				operatorClick("/",screen);
 			}
 		});
+		buttonLog.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent event) {
+				operatorClick("LN",screen);
+			}
+		});
 		buttonMultiply.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
 				operatorClick("*",screen);
@@ -173,14 +180,20 @@ public class Calculator extends Application{
 						break;
 					case "/":
 						sum=temp1/temp2;
-						break;		
+						break;	
+					case "LN":
+						if(temp1==0)
+							temp1=1.0;
+						sum=(temp1*Math.log(temp2));
+						break;	
 				}
+		
 				temp1=sum;
 				screen.setText(String.valueOf(sum));
 			}
 		});
 		//set the scene 
-		Scene scene = new Scene(grid, 145, 215);
+		Scene scene = new Scene(grid, 160, 215);
 		stage.setScene(scene);
 		stage.show();
 	}
